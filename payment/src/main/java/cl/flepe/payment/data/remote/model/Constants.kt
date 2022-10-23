@@ -9,4 +9,5 @@ object Constants {
     const val ISSUER_ID = "issuer.id"
     const val RECOMMENDED_MESSAGE = "recommended_message"
     const val PAYER_COSTS = "payer_costs"
+    const val ID = "id"
 }
