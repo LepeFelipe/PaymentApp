@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -89,6 +90,8 @@ android {
         api "com.google.dagger:dagger:2.38.1"
         api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
         api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+        api files('libs/payment-mvi.aar')
+
 
         // Compiler dependencies
         kapt "com.google.dagger:dagger-compiler:2.38.1"

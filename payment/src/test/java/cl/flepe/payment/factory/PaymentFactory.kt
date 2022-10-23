@@ -13,6 +13,7 @@ internal object PaymentFactory {
     }
 
     private fun makeRemoteCreditCardResponse() = RemoteCreditCardResponse(
+        id = generateString(),
         name = generateString(),
         thumbnail = generateString()
     )
