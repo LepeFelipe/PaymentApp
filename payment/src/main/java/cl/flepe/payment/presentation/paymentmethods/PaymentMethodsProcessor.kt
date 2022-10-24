@@ -21,8 +21,12 @@ internal class PaymentMethodsProcessor @Inject constructor(
 
     private fun paymentMethods(): Flow<GetPaymentMethodsResult> =
         repository.getPaymentMethods()
-            .map { remote ->
-                Success(with(mapper) { remote.map { it.toPresentation() } }) as GetPaymentMethodsResult
+            .map { remoteCreditCards ->
+                Success(remoteCreditCards.flatMap { remoteCreditCard ->
+                    with(mapper) {
+                        remoteCreditCard.toPresentation()
+                    }
+                }) as GetPaymentMethodsResult
             }.onStart {
                 emit(InProgress)
             }.catch {

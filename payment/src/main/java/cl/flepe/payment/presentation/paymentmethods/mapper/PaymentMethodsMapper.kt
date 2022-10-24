@@ -5,11 +5,16 @@ import cl.flepe.payment.presentation.paymentmethods.model.CreditCard
 import javax.inject.Inject
 
 internal class PaymentMethodsMapper @Inject constructor() {
-    fun RemoteCreditCardResponse.toPresentation(): CreditCard {
-        return CreditCard(
-            cardId = id.orEmpty(),
-            name = name.orEmpty(),
-            thumbnail = thumbnail.orEmpty()
+    fun RemoteCreditCardResponse.toPresentation(): List<CreditCard> {
+        val result = mutableListOf<CreditCard>()
+        result.add(
+            CreditCard(
+                cardId = id.orEmpty(),
+                name = name.orEmpty(),
+                thumbnail = thumbnail.orEmpty()
+            )
         )
+
+        return result
     }
 }
