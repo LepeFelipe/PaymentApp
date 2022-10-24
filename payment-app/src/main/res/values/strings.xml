@@ -1,0 +1,4 @@
+<resources>
+    <string name="payment_app">Payment App</string>
+    <string name="make_a_payment">Realizar un pago</string>
+</resources>

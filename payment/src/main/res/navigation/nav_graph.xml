@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/amountFragment">
+
+    <fragment
+        android:id="@+id/amountFragment"
+        android:name="cl.flepe.payment.ui.amount.AmountFragment"
+        android:label="@string/title_payment"
+        tools:layout="@layout/fragment_amount" />
+</navigation>
