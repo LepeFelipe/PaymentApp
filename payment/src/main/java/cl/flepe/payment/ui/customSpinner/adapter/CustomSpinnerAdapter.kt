@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import cl.flepe.payment.R
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 
 data class AttrsCustomSpinner(
     val id: String,
@@ -37,7 +37,7 @@ class CustomSpinnerAdapter(
         textViewName.text = attrsCustomSpinner[i].name
 
         if (attrsCustomSpinner[i].icon?.isNotEmpty() == true) {
-            Picasso.get().load(attrsCustomSpinner[i].icon).into(imgIcon);
+            Glide.with(context).load(attrsCustomSpinner[i].icon).into(imgIcon);
         }
         return rootView
     }

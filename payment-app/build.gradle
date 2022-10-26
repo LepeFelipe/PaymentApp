@@ -99,7 +99,9 @@ android {
         api 'androidx.constraintlayout:constraintlayout:2.1.4'
         api "androidx.navigation:navigation-fragment-ktx:2.5.2"
         api "androidx.navigation:navigation-ui-ktx:2.5.2"
-        api 'com.squareup.picasso:picasso:2.8'
+        api 'com.github.bumptech.glide:glide:4.12.0'
+        annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
         api files('libs/payment-mvi-1.0.0.aar')
 
 

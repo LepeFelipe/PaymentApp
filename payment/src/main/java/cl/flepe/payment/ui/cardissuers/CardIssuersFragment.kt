@@ -1,4 +1,4 @@
-package cl.flepe.payment.ui.paymentmethods
+package cl.flepe.payment.ui.cardissuers
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import cl.flepe.mvi.flow.MviUi
-import cl.flepe.payment.databinding.FragmentPaymentMethodsBinding
-import cl.flepe.payment.presentation.PaymentMethodsViewModel
-import cl.flepe.payment.presentation.paymentmethods.PaymentMethodsUIntent
-import cl.flepe.payment.presentation.paymentmethods.PaymentMethodsUiState
+import cl.flepe.payment.databinding.FragmentCardIssuersBinding
+import cl.flepe.payment.presentation.CardIssuersViewModel
+import cl.flepe.payment.presentation.cardissuers.CardIssuersUIntent
+import cl.flepe.payment.presentation.cardissuers.CardIssuersUiState
 import cl.flepe.payment.ui.di.DaggerPaymentComponent
 import cl.flepe.paymentapp.PaymentApp
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -25,23 +25,23 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-internal class PaymentMethodsFragment : Fragment(),
-    MviUi<PaymentMethodsUIntent, PaymentMethodsUiState> {
+internal class CardIssuersFragment : Fragment(),
+    MviUi<CardIssuersUIntent, CardIssuersUiState> {
 
     @Inject
-    lateinit var uiRender: PaymentMethodsUiRender
+    lateinit var uiRender: CardIssuersUiRender
 
     @Inject
-    lateinit var uIntentHandler: PaymentMethodsUIntentHandler
+    lateinit var uIntentHandler: CardIssuersUIntentHandler
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: PaymentMethodsViewModel by viewModels { viewModelFactory }
+    private val viewModel: CardIssuersViewModel by viewModels { viewModelFactory }
 
-    private val args: PaymentMethodsFragmentArgs by navArgs()
+    private val args: CardIssuersFragmentArgs by navArgs()
 
-    var binding: FragmentPaymentMethodsBinding? = null
+    var binding: FragmentCardIssuersBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +53,7 @@ internal class PaymentMethodsFragment : Fragment(),
         savedInstanceState: Bundle?
     ): View? {
         if (binding == null) {
-            binding = FragmentPaymentMethodsBinding.inflate(inflater, container, false)
+            binding = FragmentCardIssuersBinding.inflate(inflater, container, false)
         }
         return binding?.root
     }
@@ -80,24 +80,24 @@ internal class PaymentMethodsFragment : Fragment(),
         uiRender.binding = binding
         uiRender.apply {
 
-            onRetrySeePaymentMethodsEvent = {
-                uIntentHandler.onRetrySeePaymentMethodsTapped()
+            onRetrySeeCardIssuersEvent = {
+                uIntentHandler.onRetrySeeCardIssuersTapped(args.creditCard.cardId)
             }
 
-            onGoToCardIssuersEvent = { creditCard ->
+            onGoToInstallmentsEvent = { cardIssuer ->
                 binding?.let { safeBinding ->
-                    navigator.goToCardIssuers(safeBinding.root, args.amountParam, creditCard)
+                    //  navigator.goToCardIssuers(safeBinding.root, args.amountParam, args.creditCard, cardIssuer)
                 }
             }
         }
     }
 
-    override fun renderUiStates(uiState: PaymentMethodsUiState) {
+    override fun renderUiStates(uiState: CardIssuersUiState) {
         uiRender.renderUiStates(uiState)
     }
 
-    override fun userIntents(): Flow<PaymentMethodsUIntent> {
-        return uIntentHandler.userIntents()
+    override fun userIntents(): Flow<CardIssuersUIntent> {
+        return uIntentHandler.userIntents(args.creditCard.cardId)
     }
 
     override fun onDestroy() {
