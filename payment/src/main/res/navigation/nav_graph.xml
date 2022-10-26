@@ -52,10 +52,62 @@
             android:name="creditCard"
             app:argType="cl.flepe.payment.presentation.paymentmethods.model.CreditCard" />
 
+        <action
+            android:id="@+id/action_cardissuers_to_installments"
+            app:destination="@id/installmentsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
     <fragment
         android:id="@+id/installmentsFragment"
         android:name="cl.flepe.payment.ui.installments.InstallmentsFragment"
         android:label="@string/payment_select_installments_title"
-        tools:layout="@layout/fragment_installments" />
+        tools:layout="@layout/fragment_installments" >
+
+        <argument
+            android:name="amountParam"
+            app:argType="string" />
+
+        <argument
+            android:name="creditCard"
+            app:argType="cl.flepe.payment.presentation.paymentmethods.model.CreditCard" />
+
+        <argument
+            android:name="cardIssuer"
+            app:argType="cl.flepe.payment.presentation.cardissuers.model.CardIssuer" />
+
+        <action
+            android:id="@+id/action_installments_to_resume"
+            app:destination="@id/resumeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/resumeFragment"
+        android:name="cl.flepe.payment.ui.resume.ResumeFragment"
+        android:label="@string/payment_resume"
+        tools:layout="@layout/fragment_resume" >
+
+        <argument
+            android:name="amountParam"
+            app:argType="string" />
+
+        <argument
+            android:name="creditCard"
+            app:argType="cl.flepe.payment.presentation.paymentmethods.model.CreditCard" />
+
+        <argument
+            android:name="cardIssuer"
+            app:argType="cl.flepe.payment.presentation.cardissuers.model.CardIssuer" />
+
+        <argument
+            android:name="installment"
+            app:argType="cl.flepe.payment.presentation.installments.model.Installment" />
+
+    </fragment>
 </navigation>

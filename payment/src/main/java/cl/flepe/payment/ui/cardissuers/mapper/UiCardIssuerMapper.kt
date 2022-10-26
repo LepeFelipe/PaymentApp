@@ -1,15 +1,15 @@
-package cl.flepe.payment.ui.paymentmethods.mapper
+package cl.flepe.payment.ui.cardissuers.mapper
 
-import cl.flepe.payment.presentation.paymentmethods.model.CreditCard
+import cl.flepe.payment.presentation.cardissuers.model.CardIssuer
 import cl.flepe.payment.ui.customSpinner.adapter.AttrsCustomSpinner
 import javax.inject.Inject
 
-class CreditCardMapper @Inject constructor() {
-    fun CreditCard.toAttrsCustomSpinner(): List<AttrsCustomSpinner> {
+class UiCardIssuerMapper @Inject constructor() {
+    fun CardIssuer.toAttrsCustomSpinner(): List<AttrsCustomSpinner> {
         val result = mutableListOf<AttrsCustomSpinner>()
         result.add(
             AttrsCustomSpinner(
-                id = cardId,
+                id = cardIssuerId,
                 name = name,
                 icon = thumbnail
             )

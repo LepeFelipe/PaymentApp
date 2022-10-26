@@ -12,7 +12,7 @@ import cl.flepe.payment.presentation.paymentmethods.PaymentMethodsUiState.*
 import cl.flepe.payment.presentation.paymentmethods.model.CreditCard
 import cl.flepe.payment.ui.customSpinner.adapter.CustomSpinnerAdapter
 import cl.flepe.payment.ui.navigator.PaymentNavigator
-import cl.flepe.payment.ui.paymentmethods.mapper.CreditCardMapper
+import cl.flepe.payment.ui.paymentmethods.mapper.UiCreditCardMapper
 import javax.inject.Inject
 
 class PaymentMethodsUiRender @Inject constructor(private val context: Context) {
@@ -26,7 +26,7 @@ class PaymentMethodsUiRender @Inject constructor(private val context: Context) {
     lateinit var navigator: PaymentNavigator
 
     @Inject
-    lateinit var mapper: CreditCardMapper
+    lateinit var mapper: UiCreditCardMapper
 
     internal fun renderUiStates(uiState: PaymentMethodsUiState) {
         when (uiState) {

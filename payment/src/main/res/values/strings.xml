@@ -11,4 +11,6 @@
     <string name="payment_select_credit_card_title">Seleccionar Tarjeta</string>
     <string name="payment_select_card_issuer_title">Seleccionar Emisor</string>
     <string name="payment_select_installments_title">Seleccionar Cuotas</string>
+    <string name="payment_finish">Finalizar</string>
+    <string name="payment_resume">Resumen</string>
 </resources>

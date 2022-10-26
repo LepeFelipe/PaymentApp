@@ -1,4 +1,4 @@
-package cl.flepe.payment.ui.cardissuers
+package cl.flepe.payment.ui.installments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import cl.flepe.mvi.flow.MviUi
-import cl.flepe.payment.databinding.FragmentCardIssuersBinding
-import cl.flepe.payment.presentation.CardIssuersViewModel
-import cl.flepe.payment.presentation.cardissuers.CardIssuersUIntent
-import cl.flepe.payment.presentation.cardissuers.CardIssuersUiState
+import cl.flepe.payment.databinding.FragmentInstallmentsBinding
+import cl.flepe.payment.presentation.InstallmentsViewModel
+import cl.flepe.payment.presentation.installments.InstallmentsUIntent
+import cl.flepe.payment.presentation.installments.InstallmentsUiState
 import cl.flepe.payment.ui.di.DaggerPaymentComponent
 import cl.flepe.paymentapp.PaymentApp
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -25,23 +25,23 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-internal class CardIssuersFragment : Fragment(),
-    MviUi<CardIssuersUIntent, CardIssuersUiState> {
+internal class InstallmentsFragment : Fragment(),
+    MviUi<InstallmentsUIntent, InstallmentsUiState> {
 
     @Inject
-    lateinit var uiRender: CardIssuersUiRender
+    lateinit var uiRender: InstallmentsUiRender
 
     @Inject
-    lateinit var uIntentHandler: CardIssuersUIntentHandler
+    lateinit var uIntentHandler: InstallmentsUIntentHandler
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: CardIssuersViewModel by viewModels { viewModelFactory }
+    private val viewModel: InstallmentsViewModel by viewModels { viewModelFactory }
 
-    private val args: CardIssuersFragmentArgs by navArgs()
+    private val args: InstallmentsFragmentArgs by navArgs()
 
-    var binding: FragmentCardIssuersBinding? = null
+    var binding: FragmentInstallmentsBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +53,7 @@ internal class CardIssuersFragment : Fragment(),
         savedInstanceState: Bundle?
     ): View? {
         if (binding == null) {
-            binding = FragmentCardIssuersBinding.inflate(inflater, container, false)
+            binding = FragmentInstallmentsBinding.inflate(inflater, container, false)
         }
         return binding?.root
     }
@@ -80,29 +80,32 @@ internal class CardIssuersFragment : Fragment(),
         uiRender.binding = binding
         uiRender.apply {
 
-            onRetrySeeCardIssuersEvent = {
-                uIntentHandler.onRetrySeeCardIssuersTapped(args.creditCard.cardId)
+            onRetrySeeInstallmentsEvent = {
+                uIntentHandler.onRetrySeeInstallmentsTapped(
+                    args.amountParam.toInt(),
+                    args.creditCard.cardId,
+                    args.cardIssuer.cardIssuerId
+                )
             }
 
-            onGoToInstallmentsEvent = { cardIssuer ->
+            onGoToResumeEvent = { installment ->
                 binding?.let { safeBinding ->
-                    navigator.goToInstallments(
-                        safeBinding.root,
-                        args.amountParam,
-                        args.creditCard,
-                        cardIssuer
-                    )
+                    //  navigator.goToResume(safeBinding.root, args.amountParam, args.creditCard, args.cardIssuer, installment)
                 }
             }
         }
     }
 
-    override fun renderUiStates(uiState: CardIssuersUiState) {
+    override fun renderUiStates(uiState: InstallmentsUiState) {
         uiRender.renderUiStates(uiState)
     }
 
-    override fun userIntents(): Flow<CardIssuersUIntent> {
-        return uIntentHandler.userIntents(args.creditCard.cardId)
+    override fun userIntents(): Flow<InstallmentsUIntent> {
+        return uIntentHandler.userIntents(
+            args.amountParam.toInt(),
+            args.creditCard.cardId,
+            args.cardIssuer.cardIssuerId
+        )
     }
 
     override fun onDestroy() {

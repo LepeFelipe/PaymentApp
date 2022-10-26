@@ -11,5 +11,5 @@ internal interface PaymentRemote {
         amount: Int,
         paymentMethodId: String,
         issuerId: String
-    ): RemotePayerCostsResponse
+    ): List<RemotePayerCostsResponse>
 }

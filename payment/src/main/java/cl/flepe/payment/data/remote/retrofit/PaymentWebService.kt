@@ -28,5 +28,5 @@ internal interface PaymentWebService {
         @Query(AMOUNT) amount: Int,
         @Query(PAYMENT_METHOD_ID) paymentMethodId: String,
         @Query(ISSUER_ID) issuerId: String
-    ): RemotePayerCostsResponse
+    ): List<RemotePayerCostsResponse>
 }

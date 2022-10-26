@@ -23,7 +23,7 @@ internal class PaymentDataRepository @Inject constructor(private val remote: Pay
         amount: Int,
         paymentMethodId: String,
         issuerId: String
-    ): Flow<RemotePayerCostsResponse> = flow {
+    ): Flow<List<RemotePayerCostsResponse>> = flow {
         val installments = remote.getInstallments(amount, paymentMethodId, issuerId)
         emit(installments)
     }

@@ -1,4 +1,4 @@
-package cl.flepe.payment.ui.cardissuers
+package cl.flepe.payment.ui.installments
 
 import android.content.Context
 import android.view.View
@@ -6,29 +6,30 @@ import android.widget.AdapterView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import cl.flepe.payment.R
-import cl.flepe.payment.databinding.FragmentCardIssuersBinding
-import cl.flepe.payment.presentation.cardissuers.CardIssuersUiState
-import cl.flepe.payment.presentation.cardissuers.CardIssuersUiState.*
-import cl.flepe.payment.presentation.cardissuers.model.CardIssuer
-import cl.flepe.payment.ui.cardissuers.mapper.UiCardIssuerMapper
+import cl.flepe.payment.databinding.FragmentInstallmentsBinding
+import cl.flepe.payment.presentation.installments.InstallmentsUiState
+import cl.flepe.payment.presentation.installments.InstallmentsUiState.*
+import cl.flepe.payment.presentation.installments.model.Installment
+import cl.flepe.payment.presentation.installments.model.PayerCost
 import cl.flepe.payment.ui.customSpinner.adapter.CustomSpinnerAdapter
+import cl.flepe.payment.ui.installments.mapper.UiInstallmentsMapper
 import cl.flepe.payment.ui.navigator.PaymentNavigator
 import javax.inject.Inject
 
-class CardIssuersUiRender @Inject constructor(private val context: Context) {
+class InstallmentsUiRender @Inject constructor(private val context: Context) {
 
     lateinit var adapter: CustomSpinnerAdapter
-    var binding: FragmentCardIssuersBinding? = null
-    var onRetrySeeCardIssuersEvent: () -> Unit = { }
-    internal var onGoToInstallmentsEvent: (CardIssuer) -> Unit = { }
+    var binding: FragmentInstallmentsBinding? = null
+    var onRetrySeeInstallmentsEvent: () -> Unit = { }
+    internal var onGoToResumeEvent: (Installment) -> Unit = { }
 
     @Inject
     lateinit var navigator: PaymentNavigator
 
     @Inject
-    lateinit var mapper: UiCardIssuerMapper
+    lateinit var mapper: UiInstallmentsMapper
 
-    internal fun renderUiStates(uiState: CardIssuersUiState) {
+    internal fun renderUiStates(uiState: InstallmentsUiState) {
         when (uiState) {
             DefaultUiState -> {}
 
@@ -41,23 +42,23 @@ class CardIssuersUiRender @Inject constructor(private val context: Context) {
                 hideLoading()
             }
 
-            is DisplayCardIssuersUiState -> {
-                setupDisplayCardIssuers(uiState.cardIssuers)
+            is DisplayInstallmentsUiState -> {
+                setupDisplayInstallments(uiState.payerCosts)
                 hideLoading()
             }
         }
     }
 
-    private fun setupDisplayCardIssuers(cardIssuers: List<CardIssuer>) {
+    private fun setupDisplayInstallments(payerCosts: List<PayerCost>) {
         binding?.apply {
-            adapter = CustomSpinnerAdapter(context, cardIssuers.flatMap { cardIssuer ->
+            adapter = CustomSpinnerAdapter(context, payerCosts.flatMap { payerCost ->
                 with(mapper) {
-                    cardIssuer.toAttrsCustomSpinner()
+                    payerCost.installments.flatMap { it.toAttrsCustomSpinner() }
                 }
             })
-            spinnerCardIssuers.adapter = adapter
+            spinnerInstallments.adapter = adapter
 
-            spinnerCardIssuers.onItemSelectedListener =
+            spinnerInstallments.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(parent: AdapterView<*>?) {
                         // Do nothing
@@ -69,8 +70,10 @@ class CardIssuersUiRender @Inject constructor(private val context: Context) {
                         position: Int,
                         id: Long
                     ) {
-                        btnCardissuersContinue.setOnClickListener {
-                            onGoToInstallmentsEvent(cardIssuers[position])
+                        btnInstallmentsContinue.setOnClickListener {
+                            payerCosts.map { payerCost ->
+                                onGoToResumeEvent(payerCost.installments[position])
+                            }
                         }
                     }
 
@@ -82,16 +85,16 @@ class CardIssuersUiRender @Inject constructor(private val context: Context) {
     private fun showCardIssuers() {
         binding?.apply {
             genericError.isGone = true
-            spinnerCardIssuers.isVisible = true
-            btnCardissuersContinue.isVisible = true
+            spinnerInstallments.isVisible = true
+            btnInstallmentsContinue.isVisible = true
         }
     }
 
     private fun showLoading() {
         binding?.apply {
             genericError.isGone = true
-            spinnerCardIssuers.isGone = true
-            btnCardissuersContinue.isGone = true
+            spinnerInstallments.isGone = true
+            btnInstallmentsContinue.isGone = true
             loading.isVisible = true
         }
     }
@@ -104,7 +107,7 @@ class CardIssuersUiRender @Inject constructor(private val context: Context) {
         binding?.apply {
             textviewError.text = context.getString(R.string.payment_error_occurred)
             btnError.setOnClickListener {
-                onRetrySeeCardIssuersEvent()
+                onRetrySeeInstallmentsEvent()
             }
             genericError.isVisible = true
         }

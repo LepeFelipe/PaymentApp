@@ -20,7 +20,7 @@ internal class PaymentRemoteImpl @Inject constructor(private val webService: Pay
         amount: Int,
         paymentMethodId: String,
         issuerId: String
-    ): RemotePayerCostsResponse = webService.getInstallments(
+    ): List<RemotePayerCostsResponse> = webService.getInstallments(
         amount = amount,
         paymentMethodId = paymentMethodId,
         issuerId = issuerId

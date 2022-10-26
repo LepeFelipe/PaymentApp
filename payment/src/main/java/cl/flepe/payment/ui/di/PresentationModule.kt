@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import cl.flepe.mvi.flow.ExecutionThread
 import cl.flepe.mvi.flow.ExecutionThreadFactory
 import cl.flepe.payment.presentation.CardIssuersViewModel
+import cl.flepe.payment.presentation.InstallmentsViewModel
 import cl.flepe.payment.presentation.PaymentMethodsViewModel
 import dagger.Binds
 import dagger.Module
@@ -29,6 +30,13 @@ abstract class PresentationModule {
     @IntoMap
     @ViewModelKey(CardIssuersViewModel::class)
     internal abstract fun bindCardIssuersViewModel(cardIssuersViewModel: CardIssuersViewModel): ViewModel
+
+    @FlowPreview
+    @ExperimentalCoroutinesApi
+    @Binds
+    @IntoMap
+    @ViewModelKey(InstallmentsViewModel::class)
+    internal abstract fun bindInstallmentsViewModel(installmentsViewModel: InstallmentsViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

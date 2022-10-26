@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import cl.flepe.payment.R
 import com.bumptech.glide.Glide
 
@@ -37,7 +39,10 @@ class CustomSpinnerAdapter(
         textViewName.text = attrsCustomSpinner[i].name
 
         if (attrsCustomSpinner[i].icon?.isNotEmpty() == true) {
-            Glide.with(context).load(attrsCustomSpinner[i].icon).into(imgIcon);
+            Glide.with(context).load(attrsCustomSpinner[i].icon).into(imgIcon)
+            imgIcon.isVisible = true
+        } else {
+            imgIcon.isGone = true
         }
         return rootView
     }

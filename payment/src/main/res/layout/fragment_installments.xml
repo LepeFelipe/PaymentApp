@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/margin_30"
-    tools:context="cl.flepe.payment.ui.cardissuers.CardIssuersFragment">
+    tools:context="cl.flepe.payment.ui.installments.InstallmentsFragment">
 
     <Spinner
-        android:id="@+id/spinner_card_issuers"
+        android:id="@+id/spinner_installments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_70"
@@ -17,11 +17,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_cardissuers_continue"
+        android:id="@+id/btn_installments_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_50"
-        android:text="@string/payment_continue"
+        android:text="@string/payment_finish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
