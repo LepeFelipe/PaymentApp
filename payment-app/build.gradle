@@ -86,7 +86,6 @@ android {
         implementation 'androidx.core:core-ktx:1.7.0'
         implementation 'com.google.android.material:material:1.6.1'
         api 'androidx.appcompat:appcompat:1.5.1'
-        api 'androidx.constraintlayout:constraintlayout:2.1.4'
 
         api "com.squareup.retrofit2:retrofit:2.9.0"
         api "com.squareup.retrofit2:converter-gson:2.9.0"
@@ -103,6 +102,7 @@ android {
         annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
         api files('libs/payment-mvi-1.0.0.aar')
+        api files('libs/payment-components-1.0.0.aar')
 
 
         // Compiler dependencies

@@ -1,7 +1,8 @@
 package cl.flepe.payment.ui.cardissuers.mapper
 
 import cl.flepe.payment.presentation.cardissuers.model.CardIssuer
-import cl.flepe.payment.ui.customSpinner.adapter.AttrsCustomSpinner
+import cl.flepe.payment_components.components.AttrsCustomSpinner
+
 import javax.inject.Inject
 
 class UiCardIssuerMapper @Inject constructor() {

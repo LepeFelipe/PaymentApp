@@ -1,7 +1,7 @@
 package cl.flepe.payment.ui.paymentmethods.mapper
 
 import cl.flepe.payment.presentation.paymentmethods.model.CreditCard
-import cl.flepe.payment.ui.customSpinner.adapter.AttrsCustomSpinner
+import cl.flepe.payment_components.components.AttrsCustomSpinner
 import javax.inject.Inject
 
 class UiCreditCardMapper @Inject constructor() {

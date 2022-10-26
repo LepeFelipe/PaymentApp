@@ -1,7 +1,7 @@
 package cl.flepe.payment.ui.installments.mapper
 
 import cl.flepe.payment.presentation.installments.model.Installment
-import cl.flepe.payment.ui.customSpinner.adapter.AttrsCustomSpinner
+import cl.flepe.payment_components.components.AttrsCustomSpinner
 import javax.inject.Inject
 
 class UiInstallmentsMapper @Inject constructor() {

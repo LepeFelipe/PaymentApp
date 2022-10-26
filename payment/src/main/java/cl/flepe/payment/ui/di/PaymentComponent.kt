@@ -14,7 +14,7 @@ import kotlinx.coroutines.FlowPreview
 
 @ActivityScope
 @Component(
-    modules = [PresentationModule::class, RemoteModule::class],
+    modules = [PresentationModule::class, RemoteModule::class, UiModule::class],
     dependencies = [AppComponent::class]
 )
 abstract class PaymentComponent {

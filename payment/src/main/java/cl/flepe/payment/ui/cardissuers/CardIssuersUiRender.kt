@@ -5,14 +5,14 @@ import android.view.View
 import android.widget.AdapterView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import cl.flepe.payment.R
 import cl.flepe.payment.databinding.FragmentCardIssuersBinding
 import cl.flepe.payment.presentation.cardissuers.CardIssuersUiState
 import cl.flepe.payment.presentation.cardissuers.CardIssuersUiState.*
 import cl.flepe.payment.presentation.cardissuers.model.CardIssuer
 import cl.flepe.payment.ui.cardissuers.mapper.UiCardIssuerMapper
-import cl.flepe.payment.ui.customSpinner.adapter.CustomSpinnerAdapter
 import cl.flepe.payment.ui.navigator.PaymentNavigator
+import cl.flepe.payment.ui.provider.PaymentProvider
+import cl.flepe.payment_components.components.CustomSpinnerAdapter
 import javax.inject.Inject
 
 class CardIssuersUiRender @Inject constructor(private val context: Context) {
@@ -27,6 +27,9 @@ class CardIssuersUiRender @Inject constructor(private val context: Context) {
 
     @Inject
     lateinit var mapper: UiCardIssuerMapper
+
+    @Inject
+    lateinit var uiProvider: PaymentProvider
 
     internal fun renderUiStates(uiState: CardIssuersUiState) {
         when (uiState) {
@@ -102,8 +105,7 @@ class CardIssuersUiRender @Inject constructor(private val context: Context) {
 
     private fun showGenericError() {
         binding?.apply {
-            textviewError.text = context.getString(R.string.payment_error_occurred)
-            btnError.setOnClickListener {
+            uiProvider.forGenericError {
                 onRetrySeeCardIssuersEvent()
             }
             genericError.isVisible = true
