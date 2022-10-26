@@ -1,8 +1,11 @@
 package cl.flepe.payment.ui.paymentmethods
 
 import android.content.Context
+import android.view.View
+import android.widget.AdapterView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import cl.flepe.payment.R
 import cl.flepe.payment.databinding.FragmentPaymentMethodsBinding
 import cl.flepe.payment.presentation.paymentmethods.PaymentMethodsUiState
 import cl.flepe.payment.presentation.paymentmethods.PaymentMethodsUiState.*
@@ -54,16 +57,24 @@ class PaymentMethodsUiRender @Inject constructor(private val context: Context) {
             })
             spinnerCreditCards.adapter = adapter
 
+            spinnerCreditCards.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        // Do nothing
+                    }
 
-            /*  adapter.cli = { item ->
-                  onGoToCardIssuersEvent(
-                      CreditCard(
-                          cardId = item.id,
-                          name = item.leftLabel.toString(),
-                          thumbnail = ""
-                      )
-                  )
-              } */
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        btnPaymentmethodsContinue.setOnClickListener {
+                            onGoToCardIssuersEvent(creditCards[position])
+                        }
+                    }
+
+                }
             showCreditCards()
         }
     }
@@ -72,6 +83,7 @@ class PaymentMethodsUiRender @Inject constructor(private val context: Context) {
         binding?.apply {
             genericError.isGone = true
             spinnerCreditCards.isVisible = true
+            btnPaymentmethodsContinue.isVisible = true
         }
     }
 
@@ -79,6 +91,7 @@ class PaymentMethodsUiRender @Inject constructor(private val context: Context) {
         binding?.apply {
             genericError.isGone = true
             spinnerCreditCards.isGone = true
+            btnPaymentmethodsContinue.isGone = true
             loading.isVisible = true
         }
     }
@@ -89,7 +102,7 @@ class PaymentMethodsUiRender @Inject constructor(private val context: Context) {
 
     private fun showGenericError() {
         binding?.apply {
-            textviewError.text = "Ha ocurrido un error, intentelo nuevamente"
+            textviewError.text = context.getString(R.string.payment_error_occurred)
             btnError.setOnClickListener {
                 onRetrySeePaymentMethodsEvent()
             }

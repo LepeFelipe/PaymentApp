@@ -1,6 +1,7 @@
 package cl.flepe.payment.ui.paymentmethods
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +27,7 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-internal class PaymentMethodsFragment : Fragment(), AdapterView.OnItemSelectedListener,
+internal class PaymentMethodsFragment : Fragment(),
     MviUi<PaymentMethodsUIntent, PaymentMethodsUiState> {
 
     @Inject
@@ -99,13 +100,5 @@ internal class PaymentMethodsFragment : Fragment(), AdapterView.OnItemSelectedLi
 
     override fun userIntents(): Flow<PaymentMethodsUIntent> {
         return uIntentHandler.userIntents()
-    }
-
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-        TODO("Not yet implemented")
     }
 }

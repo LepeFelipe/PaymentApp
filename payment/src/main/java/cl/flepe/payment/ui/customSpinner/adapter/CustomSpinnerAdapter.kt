@@ -9,7 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import cl.flepe.payment.R
 import com.squareup.picasso.Picasso
-import javax.inject.Inject
 
 data class AttrsCustomSpinner(
     val id: String,
