@@ -90,7 +90,13 @@ internal class InstallmentsFragment : Fragment(),
 
             onGoToResumeEvent = { installment ->
                 binding?.let { safeBinding ->
-                    //  navigator.goToResume(safeBinding.root, args.amountParam, args.creditCard, args.cardIssuer, installment)
+                    navigator.goToResume(
+                        safeBinding.root,
+                        args.amountParam,
+                        args.creditCard,
+                        args.cardIssuer,
+                        installment
+                    )
                 }
             }
         }

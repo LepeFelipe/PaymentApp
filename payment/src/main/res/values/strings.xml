@@ -13,4 +13,10 @@
     <string name="payment_select_installments_title">Seleccionar Cuotas</string>
     <string name="payment_finish">Finalizar</string>
     <string name="payment_resume">Resumen</string>
+    <string name="payment_successful">Pago Exitoso</string>
+    <string name="payment_back">Volver</string>
+    <string name="payment_total">Total</string>
+    <string name="payment_credit_card">Tarjeta de Crédito</string>
+    <string name="payment_bank">Banco</string>
+    <string name="payment_installment_selected">Cuotas seleccionadas</string>
 </resources>
