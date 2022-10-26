@@ -8,6 +8,7 @@ import cl.flepe.payment.factory.GenerateValues
 import cl.flepe.payment.factory.PaymentFactory.makeRemoteCardIssuerResponseList
 import cl.flepe.payment.factory.PaymentFactory.makeRemoteCreditCardResponseList
 import cl.flepe.payment.factory.PaymentFactory.makeRemotePayerCostsResponse
+import cl.flepe.payment.factory.PaymentFactory.makeRemotePayerCostsResponseList
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -56,7 +57,7 @@ internal class PaymentDataRepositoryTest {
             val amount = GenerateValues.generateInt()
             val paymentMethodId = GenerateValues.generateString()
             val issuerId = GenerateValues.generateString()
-            val remotePayerCostsResponse = makeRemotePayerCostsResponse(5)
+            val remotePayerCostsResponse = makeRemotePayerCostsResponseList(5)
             stubGetInstallmentsInRemote(
                 amount,
                 paymentMethodId,
@@ -95,7 +96,7 @@ internal class PaymentDataRepositoryTest {
         amount: Int,
         paymentMethodId: String,
         issuerId: String,
-        remotePayerCostsResponse: RemotePayerCostsResponse
+        remotePayerCostsResponse: List<RemotePayerCostsResponse>
     ) {
         coEvery {
             remote.getInstallments(

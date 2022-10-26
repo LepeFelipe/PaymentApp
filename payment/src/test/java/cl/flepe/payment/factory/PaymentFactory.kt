@@ -6,6 +6,8 @@ import cl.flepe.payment.data.remote.model.RemoteInstallments
 import cl.flepe.payment.data.remote.model.RemotePayerCostsResponse
 import cl.flepe.payment.factory.GenerateValues.generateString
 import cl.flepe.payment.presentation.cardissuers.model.CardIssuer
+import cl.flepe.payment.presentation.installments.model.Installment
+import cl.flepe.payment.presentation.installments.model.PayerCost
 import cl.flepe.payment.presentation.paymentmethods.model.CreditCard
 
 internal object PaymentFactory {
@@ -54,16 +56,44 @@ internal object PaymentFactory {
         thumbnail = null
     )
 
+    fun makeRemotePayerCostsResponseList(count: Int): List<RemotePayerCostsResponse> = (0..count).map {
+        makeRemotePayerCostsResponse(count)
+    }
+
     fun makeRemotePayerCostsResponse(count: Int) = RemotePayerCostsResponse(
         installments = makeRemoteInstallmentsList(count)
     )
 
-    private fun makeRemoteInstallmentsList(count: Int): List<RemoteInstallments> = (0..count).map {
+    fun makeRemoteInstallmentsList(count: Int): List<RemoteInstallments> = (0..count).map {
         makeRemoteInstallments()
     }
 
     private fun makeRemoteInstallments() = RemoteInstallments(
         recommended_message = generateString()
+    )
+
+    fun makePayerCostsResponseList(count: Int): List<PayerCost> = (0..count).map {
+        makePayerCosts(count)
+    }
+
+    fun makePayerCosts(count: Int) = PayerCost(
+        installments = makeInstallmentsList(count)
+    )
+
+    fun makeInstallmentsList(count: Int): List<Installment> = (0..count).map {
+        makeInstallments()
+    }
+
+    private fun makeInstallments() = Installment(
+        message = generateString()
+    )
+
+    fun makeNullRemoteInstallmentsList(count: Int): List<RemoteInstallments> = (0..count).map {
+        makeNullRemoteInstallments()
+    }
+
+    private fun makeNullRemoteInstallments() = RemoteInstallments(
+        recommended_message = null
     )
 
     fun makeCreditCardList(count: Int): List<CreditCard> = (0..count).map {
