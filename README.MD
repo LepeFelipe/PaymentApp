@@ -2,11 +2,21 @@
 
 ## Project Composition
 
-In progress...
+MVi
 
 ## Unit Tests
 
-In progress...
+Implemented unit tests for data layer and presentation layer
+
+Data layer
+ - Repository
+ - Remote implementation
+ 
+Presentation layer
+- Mapper
+- Processor
+- Reducer
+- ViewModel
 
 ## Diagram
 
@@ -18,6 +28,14 @@ In progress...
 - Coroutines
 - Dagger
 - MockK
+- Glide
+
+### Libraries
+
+Created two libraries for MVI flow and ui components reusables
+
+- Payment ui components: [PaymentUiComponents](https://github.com/LepeFelipe/PaymentUiComponentsApp)
+- Payment Mvi: [PaymentMvi](https://github.com/LepeFelipe/PaymentUiComponentsApp)
 
 ### Work Boards
 
