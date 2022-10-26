@@ -1,5 +1,6 @@
 package cl.flepe.payment.ui.di
 
+import android.content.Context
 import cl.flepe.payment.data.remote.PaymentRemoteImpl
 import cl.flepe.payment.data.remote.retrofit.PaymentWebService
 import cl.flepe.payment.data.remote.retrofit.PaymentWebServiceFactory
@@ -16,7 +17,7 @@ abstract class RemoteModule {
 
     companion object {
         @Provides
-        internal fun provideWebServiceRetrofit(): PaymentWebService = PaymentWebServiceFactory()
-            .createRetrofit()
+        internal fun provideWebServiceRetrofit(context: Context): PaymentWebService = PaymentWebServiceFactory()
+            .createRetrofit(context)
     }
 }
