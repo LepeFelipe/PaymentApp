@@ -7,7 +7,7 @@
 
     <dist:module
         dist:instant="false"
-        dist:title="@string/title_payment">
+        dist:title="@string/payment_title">
         <dist:delivery>
             <dist:on-demand />
         </dist:delivery>

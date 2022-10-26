@@ -1,0 +1,17 @@
+[
+  {
+    "id": "cabal",
+    "name": "Cabal",
+    "thumbnail": "https://http2.mlstatic.com/storage/logos-api-admin/c9f71470-6f07-11ec-9b23-071a218bbe35-xl@2x.png"
+  },
+  {
+    "id": "cencosud",
+    "name": "Cencosud",
+    "thumbnail": "https://http2.mlstatic.com/storage/logos-api-admin/e8ffdc40-5dc7-11ec-ae75-df2bef173be2-xl@2x.png"
+  },
+  {
+    "id": "debvisa",
+    "name": "Visa Débito",
+    "thumbnail": "https://http2.mlstatic.com/storage/logos-api-admin/d589be70-eb86-11e9-b9a8-097ac027487d-xl@2x.png"
+  }
+]

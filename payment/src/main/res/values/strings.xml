@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="title_payment">Mercado Pago</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="payment_title">Mercado Pago</string>
+    <string name="payment_continue">Continuar</string>
+    <string name="payment_enter_an_amount">Ingresar monto</string>
+    <string name="payment_enter_payment_amount">Ingresa el monto del pago</string>
+    <string name="payment_enter_amount_before_continue">Ingresa un monto antes de continuar</string>
+    <string name="payment_retry">Reintentar</string>
 </resources>

@@ -8,6 +8,26 @@
     <fragment
         android:id="@+id/amountFragment"
         android:name="cl.flepe.payment.ui.amount.AmountFragment"
-        android:label="@string/title_payment"
-        tools:layout="@layout/fragment_amount" />
+        android:label="@string/payment_title"
+        tools:layout="@layout/fragment_amount" >
+
+        <action
+            android:id="@+id/action_enter_amount_to_paymentmethods"
+            app:destination="@id/paymentMethodsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/paymentMethodsFragment"
+        android:name="cl.flepe.payment.ui.paymentmethods.PaymentMethodsFragment"
+        android:label="@string/payment_title"
+        tools:layout="@layout/fragment_payment_methods" >
+
+        <argument
+            android:name="amountParam"
+            app:argType="string" />
+    </fragment>
 </navigation>
