@@ -29,5 +29,33 @@
         <argument
             android:name="amountParam"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_paymentmethods_to_cardissuers"
+            app:destination="@id/cardIssuersFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+    <fragment
+        android:id="@+id/cardIssuersFragment"
+        android:name="cl.flepe.payment.ui.cardissuers.CardIssuersFragment"
+        android:label="@string/payment_title"
+        tools:layout="@layout/fragment_card_issuers" >
+
+        <argument
+            android:name="amountParam"
+            app:argType="string" />
+
+        <argument
+            android:name="creditCard"
+            app:argType="cl.flepe.payment.presentation.paymentmethods.model.CreditCard" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/installmentsFragment"
+        android:name="cl.flepe.payment.ui.installments.InstallmentsFragment"
+        android:label="@string/payment_title"
+        tools:layout="@layout/fragment_installments" />
 </navigation>

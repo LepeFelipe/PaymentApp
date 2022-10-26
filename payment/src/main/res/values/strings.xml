@@ -7,4 +7,6 @@
     <string name="payment_enter_amount_before_continue">Ingresa un monto antes de continuar</string>
     <string name="payment_retry">Reintentar</string>
     <string name="payment_error_occurred">Ha ocurrido un error, intentelo nuevamente</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

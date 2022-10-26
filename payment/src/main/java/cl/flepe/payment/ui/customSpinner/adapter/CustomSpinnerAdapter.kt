@@ -35,8 +35,10 @@ class CustomSpinnerAdapter(
         val imgIcon = rootView.findViewById<ImageView>(R.id.imgView_icon)
 
         textViewName.text = attrsCustomSpinner[i].name
-        Picasso.get().load(attrsCustomSpinner[i].icon).into(imgIcon);
 
+        if (attrsCustomSpinner[i].icon?.isNotEmpty() == true) {
+            Picasso.get().load(attrsCustomSpinner[i].icon).into(imgIcon);
+        }
         return rootView
     }
 }

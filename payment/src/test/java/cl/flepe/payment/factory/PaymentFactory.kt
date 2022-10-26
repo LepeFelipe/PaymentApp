@@ -5,6 +5,7 @@ import cl.flepe.payment.data.remote.model.RemoteCreditCardResponse
 import cl.flepe.payment.data.remote.model.RemoteInstallments
 import cl.flepe.payment.data.remote.model.RemotePayerCostsResponse
 import cl.flepe.payment.factory.GenerateValues.generateString
+import cl.flepe.payment.presentation.cardissuers.model.CardIssuer
 import cl.flepe.payment.presentation.paymentmethods.model.CreditCard
 
 internal object PaymentFactory {
@@ -37,8 +38,20 @@ internal object PaymentFactory {
         }
 
     private fun makeRemoteCardIssuerResponse() = RemoteCardIssuerResponse(
+        id = generateString(),
         name = generateString(),
         thumbnail = generateString()
+    )
+
+    fun makeNullRemoteCardIssuerResponse(count: Int): List<RemoteCardIssuerResponse> =
+        (0..count).map {
+            makeNullRemoteCardIssuerResponse()
+        }
+
+    private fun makeNullRemoteCardIssuerResponse() = RemoteCardIssuerResponse(
+        id = null,
+        name = null,
+        thumbnail = null
     )
 
     fun makeRemotePayerCostsResponse(count: Int) = RemotePayerCostsResponse(
@@ -59,6 +72,16 @@ internal object PaymentFactory {
 
     fun makeCreditCard() = CreditCard(
         cardId = generateString(),
+        name = generateString(),
+        thumbnail = generateString()
+    )
+
+    fun makeCardIssuersList(count: Int): List<CardIssuer> = (0..count).map {
+        makeCardIssuer()
+    }
+
+    fun makeCardIssuer() = CardIssuer(
+        cardIssuerId = generateString(),
         name = generateString(),
         thumbnail = generateString()
     )
