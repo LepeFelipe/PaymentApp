@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="payment_title">Mercado Pago</string>
     <string name="payment_continue">Continuar</string>
     <string name="payment_enter_an_amount">Ingresar monto</string>
     <string name="payment_enter_payment_amount">Ingresa el monto del pago</string>
