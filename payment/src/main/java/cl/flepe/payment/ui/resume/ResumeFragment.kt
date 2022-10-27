@@ -50,7 +50,7 @@ class ResumeFragment : Fragment() {
     private fun setupResume() {
         binding?.apply {
             context?.let { safeContext ->
-                textviewAmount.text = "${getString(R.string.payment_total)}: ${args.amountParam}"
+                textviewAmount.text = "${getString(R.string.payment_total)}: $${args.amountParam}"
                 if (args.creditCard.thumbnail.isNotEmpty()) {
                     Glide.with(safeContext).load(args.creditCard.thumbnail).into(imgCreditCardIcon)
                 }
