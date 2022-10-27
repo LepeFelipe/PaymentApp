@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_30"
+    tools:context=".ui.resume.ResumeFragment">
+
+    <TextView
+        android:id="@+id/textview_resume_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_70"
+        android:gravity="center"
+        android:text="@string/payment_successful"
+        android:textColor="@color/green"
+        android:textSize="@dimen/text_size_30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_resume_title"
+        tools:text="Monto total: $2990" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider_amount"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_1"
+        android:layout_marginTop="@dimen/margin_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_amount" />
+
+    <ImageView
+        android:id="@+id/img_credit_card_icon"
+        android:layout_width="@dimen/margin_30"
+        android:layout_height="@dimen/margin_30"
+        android:layout_marginTop="@dimen/margin_15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_amount"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/textview_credit_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_15"
+        app:layout_constraintTop_toTopOf="@+id/img_credit_card_icon"
+        app:layout_constraintStart_toEndOf="@+id/img_credit_card_icon"
+        tools:text="Tarjeta: Mastercard"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider_credit_card"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_1"
+        android:layout_marginTop="@dimen/margin_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_credit_card_icon" />
+
+    <ImageView
+        android:id="@+id/img_card_issuer_icon"
+        android:layout_width="@dimen/margin_30"
+        android:layout_height="@dimen/margin_30"
+        android:layout_marginTop="@dimen/margin_15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_credit_card"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/textview_card_issuer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_15"
+        app:layout_constraintTop_toTopOf="@+id/img_card_issuer_icon"
+        app:layout_constraintStart_toEndOf="@+id/img_card_issuer_icon"
+        tools:text="Banco: Bice" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider_issuer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_1"
+        android:layout_marginTop="@dimen/margin_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_card_issuer_icon" />
+
+    <TextView
+        android:id="@+id/textview_installment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15"
+        app:layout_constraintTop_toBottomOf="@+id/divider_issuer"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Cuota seleccionada: 1 de 20"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_resume_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_50"
+        android:text="@string/payment_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

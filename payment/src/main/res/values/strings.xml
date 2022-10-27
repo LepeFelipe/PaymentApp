@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="payment_continue">Continuar</string>
+    <string name="payment_enter_an_amount">Ingresar monto</string>
+    <string name="payment_enter_payment_amount">Ingresa el monto del pago</string>
+    <string name="payment_enter_amount_before_continue">Ingresa un monto antes de continuar</string>
+    <string name="payment_retry">Reintentar</string>
+    <string name="payment_error_occurred">Ha ocurrido un error, intentelo nuevamente</string>
+    <string name="payment_enter_an_amount_title">Ingresar Monto</string>
+    <string name="payment_select_credit_card_title">Seleccionar Tarjeta</string>
+    <string name="payment_select_card_issuer_title">Seleccionar Emisor</string>
+    <string name="payment_select_installments_title">Seleccionar Cuotas</string>
+    <string name="payment_finish">Finalizar</string>
+    <string name="payment_resume">Resumen</string>
+    <string name="payment_successful">Pago Exitoso</string>
+    <string name="payment_back">Volver</string>
+    <string name="payment_total">Total</string>
+    <string name="payment_credit_card">Tarjeta de Crédito</string>
+    <string name="payment_bank">Banco</string>
+    <string name="payment_installment_selected">Cuotas seleccionadas</string>
+</resources>
