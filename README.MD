@@ -2,11 +2,12 @@
 
 ## Project Composition
 
-MVi
+**Clean architecture** is the main architecture for this project.
+Unidirectional Data Flow **MVI** in presentation layer
 
 ## Unit Tests
 
-Implemented unit tests for data layer and presentation layer
+Implemented unit tests for data and presentation layer
 
 Data layer
  - Repository
