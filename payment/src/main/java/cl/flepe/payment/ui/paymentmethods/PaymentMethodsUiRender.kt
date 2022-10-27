@@ -105,9 +105,10 @@ class PaymentMethodsUiRender @Inject constructor(private val context: Context) {
 
     private fun showGenericError() {
         binding?.apply {
-            uiProvider.forGenericError {
+           val attrs = uiProvider.forGenericError {
                 onRetrySeePaymentMethodsEvent()
             }
+            genericError.setAttributes(attrs)
             genericError.isVisible = true
         }
     }

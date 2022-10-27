@@ -108,9 +108,10 @@ class InstallmentsUiRender @Inject constructor(private val context: Context) {
 
     private fun showGenericError() {
         binding?.apply {
-            uiProvider.forGenericError {
+           val attrs = uiProvider.forGenericError {
                 onRetrySeeInstallmentsEvent()
             }
+            genericError.setAttributes(attrs)
             genericError.isVisible = true
         }
     }

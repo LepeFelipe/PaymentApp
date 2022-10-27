@@ -105,9 +105,10 @@ class CardIssuersUiRender @Inject constructor(private val context: Context) {
 
     private fun showGenericError() {
         binding?.apply {
-            uiProvider.forGenericError {
+          val attrs = uiProvider.forGenericError {
                 onRetrySeeCardIssuersEvent()
             }
+            genericError.setAttributes(attrs)
             genericError.isVisible = true
         }
     }
