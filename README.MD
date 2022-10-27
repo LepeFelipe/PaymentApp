@@ -45,5 +45,5 @@ Created two libraries for MVI flow and ui components reusables
 
 ### Apks
 
-- Develop [Dev](https://github.com/LepeFelipe/PaymentApp/blob/develop/payment-app/dev/debug/payment-app-dev-debug.aab)
-- Production [Prod](https://github.com/LepeFelipe/PaymentApp/blob/develop/payment-app/prod/debug/payment-app-prod-debug.aab)
+- Develop [Dev](https://github.com/LepeFelipe/PaymentApp/blob/develop/payment-app/dev/debug/payment-app-dev-debug.apk)
+- Production [Prod](https://github.com/LepeFelipe/PaymentApp/blob/develop/payment-app/prod/debug/payment-app-prod-debug.apk)
